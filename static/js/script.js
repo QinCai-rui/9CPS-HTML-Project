@@ -57,7 +57,7 @@ function animateElementsOnScroll() {
     // select specific content elements that should be animated (exclude header and footer)
     // (this is a bit of a hack, but it works for now ig)
     const elementsToAnimate = document.querySelectorAll(
-        'main h2, main p, main ul, main li, .feature, .news-item, .value-card, .leader'
+        'main h2, main p, main ul, main li, .feature, .news-item, .value-card, .leader, img'
     );
 
     const observer = new IntersectionObserver((entries) => {
