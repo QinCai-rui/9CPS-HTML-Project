@@ -74,7 +74,7 @@ nav ul li a.active {
 
 /* Hero Section */
 .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/kupe-house-hero-2025.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/kupe-house-hero-2025.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -201,7 +201,7 @@ nav ul li a.active {
 
 /* Values page styles */
 .values-hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/kupe-house-hero-2025.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/kupe-house-hero-2025.jpg');
 }
 
 .values-intro {
