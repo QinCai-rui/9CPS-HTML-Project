@@ -89,34 +89,39 @@ function highlightCurrentPage() {
     });
 }
 
-// Display random facts about Kupe
+// Display random facts about Kupe (fetch from API)
 function randomKupeFacts() {
-    //todo: make a python/flask powered api server serving the facts
-    // and then `fetch` the facts from there
     const factsContainer = document.querySelector('#kupe-facts');
     
     if (factsContainer) {
-        const facts = [
-            "In Māori tradition, Kupe is celebrated as the first explorer to reach New Zealand.",
-            "Kupe named New Zealand 'Aotearoa' meaning 'land of the long white cloud'.",
-            "Kupe House's mascot is the kiwi, a flightless bird native to New Zealand.",
-            "Kupe House has won multiple competitions, including house sports, at Macleans College.",
-            "The values of Kupe House include kindness, understanding, perseverance, and enthusiasm.",
-            "Kupe returned to his homeland after discovering New Zealand, promising to return but unfortunately did not.",
-            "Kupe's navigational skills allowed him to cross vast stretches of the Pacific Ocean."
-            //to do: add more facts
-        ];
-        
-        const randomFact = facts[Math.floor(Math.random() * facts.length)];
-        factsContainer.textContent = randomFact;
-        
+        const fetchFact = async () => {
+            try {
+                const response = await fetch('https://kupe-house-facts.qincai.xyz/api');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch facts');
+                }
+                const data = await response.json();
+                return data.fact;
+            } catch (error) {
+                console.error('Error fetching fact:', error);
+                return "Could not load a fact right now. Please try again later.";
+            }
+        };
+
+        const updateFact = async () => {
+            const fact = await fetchFact();
+            factsContainer.textContent = fact;
+        };
+
+        // Fetch and display the first fact
+        updateFact();
+
         // Change fact every 5 seconds
-        setInterval(() => {
-            const newFact = facts[Math.floor(Math.random() * facts.length)];
+        setInterval(async () => {
             factsContainer.classList.add('fade-out');
             
-            setTimeout(() => {
-                factsContainer.textContent = newFact;
+            setTimeout(async () => {
+                await updateFact();
                 factsContainer.classList.remove('fade-out');
                 factsContainer.classList.add('fade-in');
                 
@@ -124,7 +129,6 @@ function randomKupeFacts() {
                     factsContainer.classList.remove('fade-in');
                 }, 750);
             }, 750);
-
-        }, 5000); //5000ms = 5s
+        }, 5000); // 5000ms = 5s
     }
 }
