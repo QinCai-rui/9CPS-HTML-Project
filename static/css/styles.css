@@ -30,7 +30,11 @@ h2 {
     margin-top: 2rem;
 }
 
-p {
+p,
+ul,
+ol,
+li,
+table {
     font-family: Jost, Verdana, Geneva, Tahoma, sans-serif;
 }
 
