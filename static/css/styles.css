@@ -138,6 +138,13 @@ nav ul li a.active {
     text-align: center;
 }
 
+.intro-image:hover {
+    flex: 2;
+    text-align: center;
+    transform: translateY(-5px);
+    transition: transform 0.3s;
+}
+
 .house-emblem {
     max-width: 100%;
     border-radius: 10px;
@@ -191,6 +198,15 @@ nav ul li a.active {
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: space-between;
+}
+
+.leadership-container:hover {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    transform: translateY(-5px);
+    transition: transform 0.3s;
 }
 
 .leader {
