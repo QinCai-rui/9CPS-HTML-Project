@@ -1,6 +1,6 @@
 /* General styles */
 body {
-    font-family: Jost, Inter, Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
     color: #333333;
     margin: 0;
     padding: 0;
@@ -28,6 +28,10 @@ h2 {
     border-bottom: 2px solid #eeca00;
     padding-bottom: 0.5rem;
     margin-top: 2rem;
+}
+
+p {
+    font-family: Jost, Verdana, Geneva, Tahoma, sans-serif;
 }
 
 span.gold-colour {
