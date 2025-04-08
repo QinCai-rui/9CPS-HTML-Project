@@ -100,8 +100,8 @@ function randomKupeFacts() {
             "In Māori tradition, Kupe is celebrated as the first explorer to reach New Zealand.",
             "Kupe named New Zealand 'Aotearoa' meaning 'land of the long white cloud'.",
             "Kupe House's mascot is the kiwi, a flightless bird native to New Zealand.",
-            "Kupe House has won multiple inter-house competitions at Macleans College.",
-            "The values of Kupe House include leadership, discovery, and unity.",
+            "Kupe House has won multiple competitions, including house sports, at Macleans College.",
+            "The values of Kupe House include kindness, understanding, perseverance, and enthusiasm.",
             "Kupe returned to his homeland after discovering New Zealand, promising to return but unfortunately did not.",
             "Kupe's navigational skills allowed him to cross vast stretches of the Pacific Ocean."
             //to do: add more facts
