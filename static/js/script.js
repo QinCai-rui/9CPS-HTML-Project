@@ -5,12 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
     animateElementsOnScroll();
     randomKupeFacts();
     
-    // Add highlight to current page in navigation
+    // Add highlight to current page in navigation (see styles.css .active)
     highlightCurrentPage();
 });
 
 // Dark Mode toggler
 function initialiseDarkMode() {
+    // NOTE: symbols are somehow not showing up in Firefox
+    // (but they are showing up in Chrome and MS Edge)
     const darkModeToggle = document.createElement('button');
     darkModeToggle.id = 'dark-mode-toggle';
     darkModeToggle.classList.add('mode-toggle');
@@ -89,6 +91,8 @@ function highlightCurrentPage() {
 
 // Display random facts about Kupe
 function randomKupeFacts() {
+    //todo: make a python/flask powered api server serving the facts
+    // and then `fetch` the facts from there
     const factsContainer = document.querySelector('#kupe-facts');
     
     if (factsContainer) {
