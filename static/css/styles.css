@@ -243,6 +243,7 @@ nav ul li a.active {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
+    transition: transform 0.3s;
 }
 
 .video-section:hover {
