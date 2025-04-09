@@ -595,4 +595,8 @@ tr:last-child td {
         margin-bottom: 1.5rem;
         display: block;
     }
+
+    .video-section {
+        padding: 1rem;
+    }
 }
