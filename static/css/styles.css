@@ -501,6 +501,25 @@ tr:last-child td {
     border-bottom: 1px solid #555;
 }
 
+.dark-mode .video-section {
+    background-color: #333;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.dark-mode .video-section:hover {
+    background-color: #333;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    transform: translateY(-5px);
+    transition: transform 0.3s;
+}
+
 /* Dark mode toggle */
 .mode-toggle {
     position: fixed;
