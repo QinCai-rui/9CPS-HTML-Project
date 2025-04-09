@@ -552,7 +552,8 @@ tr:last-child td {
     cursor: pointer;
 }
 
-/* Responsive adjustments */
+/*
+/* Responsive adjustments *\/
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -619,3 +620,5 @@ tr:last-child td {
         padding: 1rem;
     }
 }
+
+*/
