@@ -235,6 +235,16 @@ nav ul li a.active {
     color: #777;
 }
 
+
+/* Video section */
+.video-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
 /* Values page styles */
 .values-hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://kupe-house.qincai.xyz/assets/kupe-house-hero-2025.jpg');
