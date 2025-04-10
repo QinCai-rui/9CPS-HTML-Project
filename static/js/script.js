@@ -90,6 +90,9 @@ function highlightCurrentPage() {
 }
 
 // Display random facts about Kupe (fetch from API)
+// See https://github.com/QinCai-rui/kupe-house-facts-api for API server
+// API hosted on my Raspberry Pi 5.
+// https://pi5-monitor.qincai.xyz
 function randomKupeFacts() {
     const factsContainer = document.querySelector('#kupe-facts');
     
