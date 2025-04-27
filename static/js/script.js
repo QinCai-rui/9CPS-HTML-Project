@@ -101,7 +101,7 @@ function randomKupeFacts() {
     if (factsContainer) {
         const fetchFact = async () => {
             try {
-                const response = await fetch('https://kupe-house-facts.qincai.xyz/api');
+                const response = await fetch('https://kupe-house-api.qincai.xyz/api/fact');
                 if (!response.ok) {
                     throw new Error('Failed to fetch facts');
                 }
