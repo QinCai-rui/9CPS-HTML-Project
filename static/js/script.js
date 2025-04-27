@@ -143,6 +143,7 @@ function initialiseChatbot() {
     const chatBox = document.getElementById("chat-box");
     const userMessageInput = document.getElementById("user-message");
     const sendButton = document.getElementById("send-button");
+    let isWaitingForResponse = false; // Flag to track if we're waiting for a response
 
     const appendMessage = (message, sender) => {
         const messageElement = document.createElement("div");
@@ -154,11 +155,17 @@ function initialiseChatbot() {
 
     const sendMessage = async () => {
         const userMessage = userMessageInput.value.trim();
-        if (!userMessage) return;
+        if (!userMessage || isWaitingForResponse) return; // Don't send if empty or already waiting
 
         // Display the user's message
         appendMessage(userMessage, "user");
         userMessageInput.value = "";
+        
+        // Show loading indicator
+        isWaitingForResponse = true;
+        sendButton.disabled = true;
+        userMessageInput.disabled = true;
+        appendMessage("...", "bot loading");
 
         try {
             // Send the message to my Flask API server
@@ -174,12 +181,29 @@ function initialiseChatbot() {
                 throw new Error("Failed to fetch response from the server.");
             }
 
+            // Remove loading indicator
+            const loadingIndicator = document.querySelector(".loading");
+            if (loadingIndicator) {
+                chatBox.removeChild(loadingIndicator);
+            }
+
             const data = await response.json();
             const botMessage = data.response || "Sorry, I couldn't process your request.";
             appendMessage(botMessage, "bot");
         } catch (error) {
             console.error("Error:", error);
-            appendMessage("An error occurred. Are you rate-limited? ", "bot");
+            appendMessage("An error occurred. Are you rate-limited?", "bot");
+        } finally {
+            // Remove loading message if it exists
+            const loadingMessage = document.querySelector(".bot.loading");
+            if (loadingMessage) {
+                chatBox.removeChild(loadingMessage);
+            }
+            
+            // Re-enable input and button
+            isWaitingForResponse = false;
+            sendButton.disabled = false;
+            userMessageInput.disabled = false;
         }
     };
 
@@ -187,6 +211,6 @@ function initialiseChatbot() {
 
     sendButton.addEventListener("click", sendMessage); // send message when button is clicked
     userMessageInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") sendMessage(); // send messages when Enter key is pressed as well
+        if (e.key === "Enter" && !isWaitingForResponse) sendMessage(); // send messages when Enter key is pressed and not waiting
     });
 }
