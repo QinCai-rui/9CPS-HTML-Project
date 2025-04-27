@@ -147,7 +147,16 @@ function initialiseChatbot() {
 
     const appendMessage = (message, sender) => {
         const messageElement = document.createElement("div");
-        messageElement.classList.add("message", sender);
+        messageElement.classList.add("message");
+        
+        // Add sender class (bot or user)
+        if (sender === "bot loading") {
+            // For loading state, add separate classes
+            messageElement.classList.add("bot", "loading");
+        } else {
+            messageElement.classList.add(sender);
+        }
+        
         messageElement.textContent = message;
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
@@ -181,25 +190,27 @@ function initialiseChatbot() {
                 throw new Error("Failed to fetch response from the server.");
             }
 
-            // Remove loading indicator
-            const loadingIndicator = document.querySelector(".loading");
-            if (loadingIndicator) {
-                chatBox.removeChild(loadingIndicator);
-            }
-
             const data = await response.json();
             const botMessage = data.response || "Sorry, I couldn't process your request.";
-            appendMessage(botMessage, "bot");
-        } catch (error) {
-            console.error("Error:", error);
-            appendMessage("An error occurred. Are you rate-limited?", "bot");
-        } finally {
-            // Remove loading message if it exists
+            
+            // Remove loading message
             const loadingMessage = document.querySelector(".bot.loading");
             if (loadingMessage) {
                 chatBox.removeChild(loadingMessage);
             }
             
+            appendMessage(botMessage, "bot");
+        } catch (error) {
+            console.error("Error:", error);
+            
+            // Remove loading message
+            const loadingMessage = document.querySelector(".bot.loading");
+            if (loadingMessage) {
+                chatBox.removeChild(loadingMessage);
+            }
+            
+            appendMessage("An error occurred. Are you rate-limited?", "bot");
+        } finally {
             // Re-enable input and button
             isWaitingForResponse = false;
             sendButton.disabled = false;
