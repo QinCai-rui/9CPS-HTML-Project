@@ -525,11 +525,11 @@ tr:last-child td {
 }
 
 .dark-mode #chat-box {
-    background-color: #a1a1a1;
+    background-color: #949494;
 }
 
 .dark-mode #chat-container {
-    background-color: #ebebeb;
+    background-color: #e0e0e0;
 }
 
 /* Dark mode toggle */
