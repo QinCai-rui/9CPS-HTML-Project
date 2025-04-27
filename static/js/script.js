@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add highlight to current page in navigation (see styles.css .active)
     highlightCurrentPage();
+
+    initialiseChatbot();
 });
 
 // Dark Mode toggler
@@ -134,4 +136,57 @@ function randomKupeFacts() {
             }, 750);
         }, 5000); // 5000ms = 5s
     }
+}
+
+// Bot (WIP)
+function initialiseChatbot() {
+    const chatBox = document.getElementById("chat-box");
+    const userMessageInput = document.getElementById("user-message");
+    const sendButton = document.getElementById("send-button");
+
+    const appendMessage = (message, sender) => {
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message", sender);
+        messageElement.textContent = message;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+    };
+
+    const sendMessage = async () => {
+        const userMessage = userMessageInput.value.trim();
+        if (!userMessage) return;
+
+        // Display the user's message
+        appendMessage(userMessage, "user");
+        userMessageInput.value = "";
+
+        try {
+            // Send the message to my Flask API server
+            const response = await fetch("https://kupe-house-api.qincai.xyz/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch response from the server.");
+            }
+
+            const data = await response.json();
+            const botMessage = data.response || "Sorry, I couldn't process your request.";
+            appendMessage(botMessage, "bot");
+        } catch (error) {
+            console.error("Error:", error);
+            appendMessage("An error occurred. Are you rate-limited? ", "bot");
+        }
+    };
+
+    appendMessage("Hi! Chat to me about Kupe or Kupe House! NOTE: I cannot remember previous messages :(", "bot");
+
+    sendButton.addEventListener("click", sendMessage); // send message when button is clicked
+    userMessageInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage(); // send messages when Enter key is pressed as well
+    });
 }
