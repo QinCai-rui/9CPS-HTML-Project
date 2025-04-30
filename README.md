@@ -21,3 +21,7 @@ This project is created in two weeks, so please do not expect very high code qua
 ### The back-end part
 
 As you may have noticed, the client-side JS fetches resources from <https://kupe-house-api.qincai.xyz> (also hosted on my Pi). Please see <https://github.com/QinCai-rui/kupe-house-api> for more information.
+
+### Other
+
+If you have looked into the .github/workflows/ directory, you can see a GitHub Actions file there. Its job is to update(`git pull`) the Git repository on the server, thus updating <https://kupe-house.qincai.xyz>, when a push is detected.
