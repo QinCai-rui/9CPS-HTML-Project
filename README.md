@@ -24,4 +24,4 @@ As you may have noticed, the client-side JS fetches resources from <https://kupe
 
 ### Other
 
-If you have looked into the .github/workflows/ directory, you can see a GitHub Actions file there. Its job is to update(`git pull`) the Git repository on the server, thus updating <https://kupe-house.qincai.xyz>, when a push is detected.
+If you have looked into the `.github/workflows/` directory, you can see a GitHub Actions file there. Its job is to update (`git pull`) the Git repository on the server, thus updating <https://kupe-house.qincai.xyz>, when a push is detected.
