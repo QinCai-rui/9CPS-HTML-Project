@@ -20,4 +20,8 @@ This project is created in two weeks, so please do not expect very high code qua
 
 ### The back-end part
 
+<<<<<<< HEAD
 As you may have noticed, the client-side JS fetches resources from <https://kupe-house-api.qincai.xyz> (also hosted on my Pi). Please see <https://github.com/QinCai-rui/kupe-house-api> for more information.
+=======
+As you may have noticed, the client-side JS fetches resources from <https://kupe-house-api.qincai.xyz> (also hosted on my Pi). Please see <https://github.com/QinCai-rui/kupe-house-api> for more information.
+>>>>>>> b92969be36549a023c70d5630d0432db864b55c0
